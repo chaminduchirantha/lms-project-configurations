@@ -1,0 +1,33 @@
+spring:
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: user-route
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/api/v1/user/**
+
+            - id: book-route
+              uri: lb://BOOK-SERVICE
+              predicates:
+                - Path=/api/v1/book/**
+
+            - id: borrowing-route
+              uri: lb://BORROWING-SERVICE
+              predicates:
+                  - Path=/api/v1/borrowing/**
+
+          default-filters:
+            - PreserveHostHeader
+
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins: "*"
+                allowed-methods: "*"
+                allowed-headers: "*"
+server:
+  port: 7000
