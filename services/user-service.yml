@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/db-lms
     username: postgres
-    password: psql
+    password: Psql@1234
     driver-class-name: org.postgresql.Driver
 
   jpa:
