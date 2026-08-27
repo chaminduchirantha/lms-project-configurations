@@ -3,40 +3,12 @@ spring:
     problemdetails:
       enabled: true
 
-  datasource:
-    url: jdbc:postgresql://localhost:5432/db-lms
-    username: postgres
-    password: Psql@1234
-    driver-class-name: org.postgresql.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-
-servlet:
-  multipart:
-    enabled: true
-    max-file-size: 5MB
-    max-request-size: 10MB
+  mongodb:
+    uri: mongodb://root:SNMVrMjHKfY3aha5DL0IEtAIltCtoOnljC4UJtQn5MBq2-Pq@d3c8708c-f2f6-4cb7-a935-89412ab7fde2.asia-southeast1.firestore.goog:443/db-lms?loadBalanced=true&tls=true&authMechanism=SCRAM-SHA-256&retryWrites=false
 
 server:
   port: 0
-  forward-headers-strategy: framework
-
-app:
-  storage:
-    path: ${user.home}/.ijse/lms/users
 
 eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:9001/eureka
   instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
-
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
