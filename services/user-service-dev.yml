@@ -28,10 +28,6 @@ server:
   port: 0
   forward-headers-strategy: framework
 
-eureka:
-  instance:
-    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
-
 app:
   storage:
     path: ${user.home}/.ijse/lms/users
@@ -42,4 +38,5 @@ eureka:
       defaultZone: http://localhost:9001/eureka
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
 
